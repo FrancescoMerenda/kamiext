@@ -11,7 +11,7 @@ type command struct {
 	Args       []string
 }
 
-func Command() (*command) {
+func Command() *command {
 	new_cmd := &command{}
 	new_cmd.Executable = os.Args[0]
 	if len(os.Args) < 2 {
