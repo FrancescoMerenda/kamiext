@@ -11,18 +11,18 @@ type command struct {
 	Args       []string
 }
 
-func Command() (*command, int8) {
+func Command() (*command) {
 	new_cmd := &command{}
 	new_cmd.Executable = os.Args[0]
 	if len(os.Args) < 2 {
-		return new_cmd, 1
+		return new_cmd
 	}
 	command_name := os.Args[1]
 	new_cmd.Command = command_name[2:]
 	if len(os.Args) > 2 {
 		new_cmd.Args = os.Args[2:]
 	}
-	return new_cmd, 0
+	return new_cmd
 }
 
 func Result(data any) Response {
