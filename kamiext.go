@@ -57,6 +57,14 @@ func (cmd *command) Method(f func() Response) Response {
 	return f()
 }
 
+func (cmd *command) NoMethod() Response {
+	return ErrorStr("No Command Given")
+}
+
+func (cmd *command) MethodNotFound() Response {
+	return ErrorStr("Method Not Found")
+}
+
 // var input_data input_type
 // kamiext.JsonMethod(MethodName, cmd.args, input_data)
 func (cmd *command) JsonMethod(f func(any) Response, input_data any) Response {
