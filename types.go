@@ -6,17 +6,16 @@ type Response struct {
 }
 type Extension struct {
 	Name        string   `json:"name"`
+	Domain      string   `json:"domain"`
 	Id          string   `json:"id"`
-	Authors     string   `json:"author"`
+	Author     string   `json:"author"`
 	Source      string   `json:"source"`
+	Logo        string   `json:"logo"`
 	Executable  string   `json:"executable"`
 	Methods     []string `json:"methods"`
-	Logo        string   `json:"logo"`
 	UpdatesUrl  string   `json:"updatesurl"`
 	Updater     string   `json:"updater"`
-	Domain      string   `json:"domain"`
 	Version     string   `json:"version"`
-	DataVersion string   `json:"dataversion"`
 }
 type Comic struct {
 	Title         string    `json:"title"`
