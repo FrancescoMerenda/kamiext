@@ -3,6 +3,8 @@ package kamiext
 import (
 	"encoding/json"
 	"os"
+
+	"github.com/FrancescoMerenda/kamitypes"
 )
 
 type command struct {
@@ -25,19 +27,19 @@ func Command() (*command, int8) {
 	return new_cmd, 0
 }
 
-func Result(data any) Response {
-	return Response{Data: data}
+func Result(data any) kamitypes.Response {
+	return kamitypes.Response{Data: data}
 }
 
-func Error(err error) Response {
-	return Response{Error: err.Error()}
+func Error(err error) kamitypes.Response {
+	return kamitypes.Response{Error: err.Error()}
 }
 
-func ErrorStr(err string) Response {
-	return Response{Error: err}
+func ErrorStr(err string) kamitypes.Response {
+	return kamitypes.Response{Error: err}
 }
 
-func Write(data Response) int8 {
+func Write(data kamitypes.Response) int8 {
 	bytes, _ := json.Marshal(data)
 	_, err := os.Stdout.Write(bytes)
 	if err != nil {
@@ -46,20 +48,20 @@ func Write(data Response) int8 {
 	return 0
 }
 
-func (cmd *command) ArgMethod(f func(string) Response) Response {
+func (cmd *command) ArgMethod(f func(string) kamitypes.Response) kamitypes.Response {
 	if len(cmd.Args) < 1 {
 		return ErrorStr("Not enough arguments")
 	}
 	return f(cmd.Args[0])
 }
 
-func (cmd *command) Method(f func() Response) Response {
+func (cmd *command) Method(f func() kamitypes.Response) kamitypes.Response {
 	return f()
 }
 
 // var input_data input type
 // kamiext.JsonMethod(MethodName, cmd.args, input_data)
-func (cmd *command) JsonMethod(f func(any) Response, input_data any) Response {
+func (cmd *command) JsonMethod(f func(any) kamitypes.Response, input_data any) kamitypes.Response {
 	if len(cmd.Args) < 1 {
 		return ErrorStr("Not enough arguments")
 	}
