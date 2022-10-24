@@ -57,7 +57,7 @@ func (cmd *command) Method(f func() Response) Response {
 	return f()
 }
 
-// var input_data input type
+// var input_data input_type
 // kamiext.JsonMethod(MethodName, cmd.args, input_data)
 func (cmd *command) JsonMethod(f func(any) Response, input_data any) Response {
 	if len(cmd.Args) < 1 {

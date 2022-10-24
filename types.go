@@ -34,30 +34,19 @@ type Comic struct {
 	Altnames      []string  `json:"altnames"`
 	Genres        []string  `json:"genres"`
 	Year          string    `json:"year"`
-	Trackers      []Tracker `json:"trackers"`
 	Chapters      []Chapter `json:"chapters"`
 }
+
 type SearchComic struct {
 	Title  string `json:"title"`
 	Id     string `json:"id"`
 	Handle string `json:"handle"`
 	Cover  string `json:"cover"`
 }
-type Tracker struct {
-	Tracker  string `json:"tracker"`
-	Tracking bool   `json:"tracking"`
-	Status   string `json:"status"`
-	Id       string `json:"id"`
-	Rating   string `json:"rating"`
-}
 type Chapter struct {
 	Name         string   `json:"name"`
-	Number               string   `json:"number"` //should "Number" be a float nstead?
+	Number       string   `json:"number"`
 	Timestamp    int      `json:"timestamp"`
 	Handle       string   `json:"handle"`
 	Pages        []string `json:"pages"`
-	Local        bool     `json:"local"`
-	Bookmark     bool     `json:"bookmark"`
-	LastPageRead int      `json:"lastpageread"`
-	Read         bool     `json:"read"`
 }
