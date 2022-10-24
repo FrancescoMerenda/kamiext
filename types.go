@@ -5,17 +5,24 @@ type Response struct {
 	Error string `json:"error"`
 }
 type Extension struct {
-	Name        string   `json:"name"`
-	Domain      string   `json:"domain"`
-	Id          string   `json:"id"`
-	Author     string   `json:"author"`
-	Source      string   `json:"source"`
-	Logo        string   `json:"logo"`
-	Executable  string   `json:"executable"`
-	Methods     []string `json:"methods"`
-	UpdatesUrl  string   `json:"updatesurl"`
-	Updater     string   `json:"updater"`
-	Version     string   `json:"version"`
+	Name            string   `json:"name"`
+	ExtensionId     string   `json:"id"`
+	Author          string   `json:"author"`
+	ExtensionSource string   `json:"source"`
+	Sources         []Source `json:"sources"`
+	Logo            string   `json:"logo"`
+	Executable      string   `json:"executable"`
+	UpdatesUrl      string   `json:"updatesurl"`
+	Updater         string   `json:"updater"`
+	Version         string   `json:"version"`
+}
+type Source struct {
+	Name            string `json:"name"`
+	Methods         []string `json:"methods"`
+	Id              string `json:"id"`
+	Logo            string   `json:"logo"`
+	Domain          string `json:"domain"`
+	ExtensionId     string `json:"extensionid"`
 }
 type Comic struct {
 	Title         string    `json:"title"`
@@ -43,9 +50,9 @@ type SearchComic struct {
 	Cover  string `json:"cover"`
 }
 type Chapter struct {
-	Name         string   `json:"name"`
-	Number       string   `json:"number"`
-	Timestamp    int      `json:"timestamp"`
-	Handle       string   `json:"handle"`
-	Pages        []string `json:"pages"`
+	Name      string   `json:"name"`
+	Number    string   `json:"number"`
+	Timestamp int      `json:"timestamp"`
+	Handle    string   `json:"handle"`
+	Pages     []string `json:"pages"`
 }
